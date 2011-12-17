@@ -1,0 +1,2 @@
+#!/bin/sh
+java -Dorg.lwjgl.opengl.allowSoftwareOpenGL=true -Djava.library.path=native -jar monos.jar

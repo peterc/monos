@@ -1,0 +1,17 @@
+DECEMBER 17, 2011
+
+03:00
+Let's get this baby on GitHub!
+
+02:55
+Have a basic build on Windows now. Going to forget about Windows
+for quite some time and get on to actual work ;-)
+
+02:51
+For some reason I've wasted a lot of time getting the build to run 
+on Windows properly. I wanted to have the Slick and LWJGL stuff in
+vendor but once packaged up, Windows is not playing ball. So into
+lib/ they go!
+
+02:00
+contest starts
