@@ -1,17 +1,11 @@
 module Monos
   class Game < BasicGame
-    VIEWPORT_WIDTH = 800
-    VIEWPORT_HEIGHT = 480
-    PIXEL_SIZE = 4
-    SCALED_WIDTH = VIEWPORT_WIDTH / PIXEL_SIZE
-    SCALED_HEIGHT = VIEWPORT_HEIGHT / PIXEL_SIZE
-    FULL_SCREEN = false
     
     def render(container, graphics)
-      graphics.scale(PIXEL_SIZE, PIXEL_SIZE)
+      graphics.scale(Monos::PIXEL_SIZE, Monos::PIXEL_SIZE)
   
       @bg.draw(0, 0)
-      @level.render(@tiles, @player.x * -1, @player.y * -1) 
+      @level.render(@tiles, @player.actual_x * -1, @player.actual_y * -1) 
       @player.render
     end
     
@@ -40,6 +34,7 @@ module Monos
       input = container.get_input
       container.exit if input.is_key_down(Input::KEY_ESCAPE)      
       
+      @player.tick
       @player.process_input(input)
     end
     
@@ -48,7 +43,7 @@ module Monos
     
     def self.main
       app = AppGameContainer.new(new)
-      app.set_display_mode(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, FULL_SCREEN)
+      app.set_display_mode(Monos::VIEWPORT_WIDTH, Monos::VIEWPORT_HEIGHT, Monos::FULL_SCREEN)
       app.set_always_render true
       app.set_show_fps true
       app.set_smooth_deltas true

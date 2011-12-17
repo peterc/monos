@@ -1,5 +1,17 @@
 DECEMBER 17, 2011
 
+21:00
+Due to family commitments, I am only now able to get back on the 
+case again :-) I'll probably get about 12 hours of development
+time in all, rather than 48, as I'm taking my daughter to see
+"Santa" tomorrow!
+
+We now have smooth movement of a non-character around a rather
+non-level. Time to think of an actual idea and a "game" around
+some of this stuff now. Hmm.
+
+------- BREAK -------
+
 06:53
 Quite a lot of progress in the last 30 minutes. Started doing some
 structuring and breaking things out into classes. Pushed rendering

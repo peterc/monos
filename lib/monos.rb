@@ -18,3 +18,14 @@ java_import org.newdawn.slick.Color
 require 'monos/level'
 require 'monos/player'
 require 'monos/game'
+
+module Monos
+  #VIEWPORT_WIDTH = 800
+  #VIEWPORT_HEIGHT = 480
+  VIEWPORT_WIDTH = 512
+  VIEWPORT_HEIGHT = 448
+  PIXEL_SIZE = 4
+  SCALED_WIDTH = VIEWPORT_WIDTH / PIXEL_SIZE
+  SCALED_HEIGHT = VIEWPORT_HEIGHT / PIXEL_SIZE
+  FULL_SCREEN = false
+end

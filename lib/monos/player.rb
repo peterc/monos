@@ -1,10 +1,12 @@
 module Monos
   class Player
-    attr_accessor :x, :y
+    attr_accessor :x, :y, :actual_x, :actual_y
     
     def initialize(sprite)
       @x = 20
       @y = 20
+      @actual_x = 20
+      @actual_y = 20
       @sprite = sprite
     end
     
@@ -20,6 +22,30 @@ module Monos
       end
       if input.is_key_pressed(Input::KEY_DOWN)
         @y += 1
+      end
+    end
+    
+    def tick
+      if (@actual_x - @x).abs < 0.1
+        @actual_x = @x
+      end
+
+      if (@actual_y - @y).abs < 0.1
+        @actual_y = @y
+      end
+      
+      if @actual_x < @x
+        @actual_x += 0.1
+      end
+      if @actual_x > @x
+        @actual_x -= 0.1
+      end
+      
+      if @actual_y < @y
+        @actual_y += 0.1
+      end
+      if @actual_y > @y
+        @actual_y -= 0.1
       end
     end
     
