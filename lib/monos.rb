@@ -10,6 +10,7 @@ java_import org.newdawn.slick.SlickException
 java_import org.newdawn.slick.AppGameContainer
 java_import org.newdawn.slick.UnicodeFont
 java_import org.newdawn.slick.SpriteSheet
+java_import org.newdawn.slick.Sound
 java_import org.newdawn.slick.font.HieroSettings
 java_import org.newdawn.slick.font.effects.ColorEffect
 java_import org.newdawn.slick.Color

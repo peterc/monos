@@ -10,6 +10,7 @@ module Monos
     def render(container, graphics)
       graphics.scale(PIXEL_SIZE, PIXEL_SIZE)
   
+      @bg.draw(0, 0)
       @level.render(@tiles, @player.x * -1, @player.y * -1) 
       @player.render
     end
@@ -30,6 +31,9 @@ module Monos
       @level = Level.new
       
       container.get_input.enable_key_repeat(0, 50)
+      
+      @sound = Sound.new(RELATIVE_ROOT + 'data/heal.ogg')
+      @sound.play
     end
     
     def update(container, delta)

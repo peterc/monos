@@ -7,6 +7,8 @@ RELATIVE_ROOT = $0['<'] ? 'monos/' : ''
 require 'java'
 require 'lwjgl.jar'
 require 'slick.jar'
+require 'jorbis-0.0.15.jar'
+require 'jogg-0.0.7.jar'
 
 require 'monos'
 Monos::Game.start
