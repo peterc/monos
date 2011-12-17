@@ -1,0 +1,2 @@
+#!/bin/sh
+./launch4j /Users/peter/Dropbox/dev/monos/misc/launch4j-windows.xml && cp /Users/peter/Sandbox/ld22/monos-windows/monos.exe /Volumes/peter/Desktop

@@ -13,6 +13,7 @@ Scripts
 * `bin/run` - Runs game under JRuby directly
 * `bin/build_jar` - Removes old jar file (if any) and builds a new jar for packaging or running
 * `bin/run_jar` - Runs the jar file with Java
+* `bin/windows_build` - Only for me to use, not much point for anyone else as it has paths you won't have.
 
 Technologies
 ------------
