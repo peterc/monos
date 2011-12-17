@@ -1,5 +1,10 @@
 DECEMBER 17, 2011
 
+04:01
+Have learnt how to get scaled, pixelated graphics on a Java
+graphics context. That took longer than expected. Now let's look
+at some structure to all this..
+
 03:00
 Let's get this baby on GitHub!
 

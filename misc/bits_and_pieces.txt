@@ -1,0 +1,10 @@
+def render(container, graphics)
+  #@bg.draw(0, 0)
+  #graphics.draw_string("MONOS (ESCAPE TO EXIT)", 8, 450)
+  buf = ImageBuffer.new(VIEWPORT_WIDTH, VIEWPORT_HEIGHT)
+  100.times do
+    buf.setRGBA(rand(500), rand(400), 255, 0, 0, 255)
+  end
+  img = Image.new(buf)
+  graphics.draw_image(img, 0, 0)
+end
