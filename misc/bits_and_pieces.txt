@@ -42,3 +42,11 @@ end
 #@font1.get_effects.add(ColorEffect.new)
 #@font1.load_glyphs
 #@pixels = ImageBuffer.new(SCALED_WIDTH, SCALED_HEIGHT)
+
+
+
+graphics.rotate(80, 80, 45)
+graphics.set_color(Color.new(0, 0, 0))
+graphics.set_line_width(4 * Monos::PIXEL_SIZE)
+
+graphics.draw_rect(2.0, 2.0, Monos::SCALED_WIDTH - 3.5, Monos::SCALED_HEIGHT - 3.5)

@@ -1,6 +1,9 @@
 #$: << File.expand_path('..', __FILE__)
 
 java_import org.newdawn.slick.BasicGame
+java_import org.newdawn.slick.state.StateBasedGame
+java_import org.newdawn.slick.state.BasicGameState
+java_import org.newdawn.slick.BasicGame
 java_import org.newdawn.slick.GameContainer
 java_import org.newdawn.slick.Graphics
 java_import org.newdawn.slick.Image
@@ -18,6 +21,8 @@ java_import org.newdawn.slick.Color
 require 'monos/level'
 require 'monos/player'
 require 'monos/game'
+require 'monos/gameplay_state'
+require 'monos/intro_state'
 
 module Monos
   #VIEWPORT_WIDTH = 800

@@ -8,7 +8,10 @@ module Monos
       100.times do
         sa = []
         100.times do
-          sa << rand(3)
+          v = 2
+          v = 0 if rand(10) == 0
+          v = 1 if rand(10) == 0
+          sa << v
         end
         @cells << sa
       end

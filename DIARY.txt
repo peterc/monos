@@ -1,5 +1,14 @@
 DECEMBER 17, 2011
 
+23:06
+Got the concept of game 'states' involved. So there's now an
+'intro' screen (with nothing on it!) and a gameplay state you
+can enter (using Space).
+
+The plan now is to come up with a very basic game mechanism on
+top of the tiling idea so far so that I have a chance of 
+completing something playable.
+
 21:00
 Due to family commitments, I am only now able to get back on the 
 case again :-) I'll probably get about 12 hours of development
