@@ -31,3 +31,15 @@ Directories
 * `lib` - game code plus slick and LWJGL libraries
 * `misc` - miscellaneously, currently just a Launch4j build file
 * `native` - native libraries for OS X, Linux and Windows
+
+Licenses
+--------
+
+Game itself is BSD licensed.
+
+Content-wise..
+
+The FontStruction “Zaratustra Bigital”
+(http://fontstruct.com/fontstructions/show/39825) by Guilherme Töws is licensed
+under a Creative Commons Attribution license
+(http://creativecommons.org/licenses/by/3.0/).

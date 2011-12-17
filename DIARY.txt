@@ -1,5 +1,14 @@
 DECEMBER 17, 2011
 
+06:05
+The code is like a very messy car wreck. But I've been learning
+a lot. Picking up Slick which dealing with all the Java integration
+and performance issues is proving the time suck. I'll need to
+come up with a very simple game so I have a chance of finishing :-)
+
+04:39
+Hmm, it's using 200MB extra memory every second. That's not good.
+
 04:01
 Have learnt how to get scaled, pixelated graphics on a Java
 graphics context. That took longer than expected. Now let's look
