@@ -8,3 +8,37 @@ def render(container, graphics)
   img = Image.new(buf)
   graphics.draw_image(img, 0, 0)
 end
+
+
+#graphics.set_font(@font1)
+
+
+#pixels = ImageBuffer.new(SCALED_WIDTH, SCALED_HEIGHT)
+#
+#10000.times do
+#  pixels.setRGBA(rand(SCALED_WIDTH), rand(SCALED_HEIGHT), 255, 0, 0, 255)
+#end
+#
+#i = pixels.get_image(Image::FILTER_NEAREST)
+#@bg.draw(0, 0)
+#i.draw(0, 0)
+#
+#i.destroy
+#@bg.draw(0,0)
+#graphics.draw_string("DEF", 50, 50)
+
+
+#@font1.draw_string(20, 20, "ABC")
+
+
+
+
+#fis = FileInputStream.new(RELATIVE_ROOT + 'data/zara.ttf')
+#@base_font = Font.create_font(Font::TRUETYPE_FONT, BufferedInputStream.new(fis))
+#@font1 = TrueTypeFont.new(@base_font, false)
+
+#@font1 = UnicodeFont.new(RELATIVE_ROOT + 'data/zara.ttf', 16, false, false)
+#@font1.add_ascii_glyphs
+#@font1.get_effects.add(ColorEffect.new)
+#@font1.load_glyphs
+#@pixels = ImageBuffer.new(SCALED_WIDTH, SCALED_HEIGHT)

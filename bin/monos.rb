@@ -8,5 +8,5 @@ require 'java'
 require 'lwjgl.jar'
 require 'slick.jar'
 
-require 'monos_game'
-MonosGame.main
+require 'monos'
+Monos::Game.start

@@ -1,5 +1,17 @@
 DECEMBER 17, 2011
 
+06:53
+Quite a lot of progress in the last 30 minutes. Started doing some
+structuring and breaking things out into classes. Pushed rendering
+off to specific classes. Introduced a 'character' of sorts and you
+can now walk around a map. No game mechanic yet but there's something
+to "do".
+
+06:24
+Some relatively smooth scrolling at least. Started to get tired so
+will have a little think about an actual game idea, fiddle with
+some sounds, and get ready to head home.
+
 06:05
 The code is like a very messy car wreck. But I've been learning
 a lot. Picking up Slick which dealing with all the Java integration
