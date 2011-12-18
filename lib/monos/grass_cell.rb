@@ -3,7 +3,17 @@ module Monos
     def initialize
       super
       
-      @sprite = Monos.tiles[0][2]
+      @name = :grass
+      
+      type = rand(5)
+      
+      if type == 0
+        @sprite = Monos.tiles[2][4]
+      else
+        @sprite = Monos.tiles[0][2]
+      end
+      
+      @blocking = false
     end
   end
 end

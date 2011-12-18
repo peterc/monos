@@ -28,6 +28,10 @@ end
 #graphics.draw_string("DEF", 50, 50)
 
 
+#graphics.scale(Monos::PIXEL_SIZE, Monos::PIXEL_SIZE)
+
+
+
 #@font1.draw_string(20, 20, "ABC")
 
 

@@ -1,4 +1,37 @@
-DECEMBER 17, 2011
+DEVELOPMENT DIARY
+=================
+
+DECEMBER 18, 2011
+-----------------
+
+21:50
+Finally back at the office. Managed to do an hour at the in-laws'
+which got me through creating a simple font and a text renderer
+(which also supports arbitrary sprites from the sprite sheet :-))
+Can I get the real game mechanic done in 3.75 hours?
+
+17:29
+A massive gap due to 3 hours' sleep, taking my daughter to see
+Santa, then 4 hours to top up that sleep. And now at the in-laws
+for the traditional Sunday lunch and slumming it on the Macbook Air.
+Unsure how far I'm going to get in the few hours left but should
+be back in the office by 10pm and get 3-4 solid hours in.. going
+to see what I can scrabble together while here at the in-laws
+though. Already failed with some game data persistence due to
+the "muffin" system (a joke on "cookies" I'm guessing) inserting
+extraneous and invalid crap into its filenames. Time to focus on
+adding extra entities to the map.
+
+------- BREAK -------
+
+04:14
+Amazing progress continues. This is what they call "in the zone" I
+guess. I'm hoping I can get by on 4 hours of sleep instead of 5(!)
+The game theme is a rich dude who wants to enjoy a quiet break
+alone on his new tropical island but.. all his fanboys and the
+press are on his tail. The aim of the game is to get them to leave
+you alone. It's going to be a bit like a cross between tower defense
+style games, bomberman, and shoot em up.
 
 02:57
 Major developments! I had a brainwave and have made huge progress
@@ -16,6 +49,11 @@ with gaps on Windows (ARGH!!)
 At some point I might even figure out a game mechanic.. but
 on the plus side, movement and rendering now seem to be as
 smooth as butter. Lumpy butter.
+
+
+
+DECEMBER 17, 2011
+-----------------
 
 23:56
 Turns out we need to get jogg, and only jogg, into the
@@ -73,6 +111,7 @@ come up with a very simple game so I have a chance of finishing :-)
 
 04:39
 Hmm, it's using 200MB extra memory every second. That's not good.
+(Addendum: turns out you need to do some explicit memory management)
 
 04:01
 Have learnt how to get scaled, pixelated graphics on a Java
@@ -90,7 +129,7 @@ for quite some time and get on to actual work ;-)
 For some reason I've wasted a lot of time getting the build to run 
 on Windows properly. I wanted to have the Slick and LWJGL stuff in
 vendor but once packaged up, Windows is not playing ball. So into
-lib/ they go!
+lib/ they go.
 
 02:00
-contest starts
+Ludum Dare 22 begins!

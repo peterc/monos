@@ -1,40 +1,35 @@
 module Monos
-  class Player
-    attr_accessor :x, :y, :actual_x, :actual_y, :level
-    
-    ANIMATION_DURATION = 100
-    
-    def sprites      
-      return @sprites if @sprites
-
-      frames = { :standing => [0], :up => [1, 4], :right => [2, 5], :left => [3, 6], :down => [7, 8] }
-      
-      @sprites = {}
-      frames.each do |name, positions|
-        @sprites[name] = Animation.new
-        positions.each do |position|
-          @sprites[name].add_frame(Monos.tiles[1][position], ANIMATION_DURATION)
-        end
-      end
-      
-      @sprites
-    end
-    
+  class Player < Creature
     def initialize(level)
-      @state = :standing
-      @level = level
-      @x = level.width / 2
-      @y = level.height / 2
-      @actual_x = @x
-      @actual_y = @y
+      super
+      @lives = 6
+      #@weapons = []
+      @weapon_selected = 0
     end
     
-    def render
-      x = 8 * 8 * Monos::PIXEL_SIZE
-      y = 6 * 8 * Monos::PIXEL_SIZE
-      x2 = x + (Monos::PIXEL_SIZE * 8)
-      y2 = y + (Monos::PIXEL_SIZE * 8)
-      sprites[@state].draw(x, y, (Monos::PIXEL_SIZE * 8), (Monos::PIXEL_SIZE * 8)) #, 0, 0, 8, 8)
+    def sprite_frames
+      row = 1
+      frames = { :standing => [[row, 0]], :up => [[row, 1], [row, 4]], :right => [[row, 2], [row, 5]], :left => [[row, 3], [row, 6]], :down => [[row, 7], [row, 8]] }
+    end
+
+    def can_visit?(cell)
+      [:grass, :sand].include?(cell.name)
+    end
+    
+    def render_lives
+      # EUGH!
+      start_x = Monos::VIEWPORT_WIDTH - 8 - Monos::TILE_PIXEL_WIDTH
+      start_y = Monos::VIEWPORT_HEIGHT - 8 - Monos::TILE_PIXEL_WIDTH
+      @lives.times do
+        Monos.tiles[4][0].draw(start_x, start_y, Monos::TILE_PIXEL_WIDTH, Monos::TILE_PIXEL_WIDTH)
+        start_x -= Monos::PIXEL_SIZE * 9
+      end
+    end
+    
+    def render_inventory
+      x = 8
+      y = Monos::VIEWPORT_HEIGHT - 8 - Monos::PIXEL_SIZE * Monos::TILE_WIDTH
+      Font.new(8).draw_string("jklm", x, y)
     end
     
     def process_input(container, delta)     
@@ -55,54 +50,16 @@ module Monos
       end
     end
     
-    def move(movement_delta, left, right, up, down)
-      if left #&& @level.cell
-        @x -= movement_delta
-        @state = :left
-      end
-      if right
-        @x += movement_delta
-        @state = :right
-      end
-      if up
-        @y -= movement_delta
-        @state = :up
-      end
-      if down
-        @y += movement_delta
-        @state = :down
-      end
+    def render
+      x = CENTER_TILE_X * 8 * Monos::PIXEL_SIZE
+      y = CENTER_TILE_Y * 8 * Monos::PIXEL_SIZE
+      sprites[@state].draw(x, y, (Monos::TILE_PIXEL_WIDTH), (Monos::TILE_PIXEL_WIDTH))
     end
+    
     
     def tick(container, delta)
-      if (@actual_x - @x).abs < 0.25
-        @actual_x = @x
-        @state = :standing
-      end
-
-      if (@actual_y - @y).abs < 0.25
-        @actual_y = @y
-        @state = :standing
-      end
-      
-      if @actual_x < @x
-        @actual_x += 0.01 * delta
-      end
-      if @actual_x > @x
-        @actual_x -= 0.01 * delta
-      end
-      
-      if @actual_y < @y
-        @actual_y += 0.01 * delta
-      end
-      if @actual_y > @y
-        @actual_y -= 0.01 * delta
-      end     
-      
+      super      
       process_input(container, delta)
-      
     end
-    
-
   end
 end

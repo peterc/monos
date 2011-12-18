@@ -1,6 +1,6 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
-  <headerType>console</headerType>
+  <headerType>gui</headerType>
   <jar>/Users/peter/Dropbox/dev/monos/monos.jar</jar>
   <outfile>/Users/peter/Sandbox/ld22/monos-windows/monos.exe</outfile>
   <errTitle></errTitle>

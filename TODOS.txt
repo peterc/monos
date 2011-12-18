@@ -1,0 +1,37 @@
+PERSONAL TODO LIST
+==================
+
+Essential
+---------
+
+* Other entities
+* Entities randomly on map approaching from afar
+* Turrets
+* Turret shooting logic
+* Placing turrets
+* Bombs
+* Gun
+* Sound FX
+* Bodge loses lives when players touch
+
+
+Nice to have
+------------
+
+* Nicer edges for grass, sand, etc
+* "waves"/levels
+* actually implement bombs and guns..
+
+End
+---
+
+* Package for Windows
+* Package for OS X
+* Commit to GitHub
+* Upload
+  - http://peterc.org.s3.amazonaws.com/bodge-windows.zip
+  - http://peterc.org.s3.amazonaws.com/bodge-osx.zip
+
+* Screencast
+* Twitter
+* Facebook

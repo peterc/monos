@@ -12,5 +12,7 @@ require 'jorbis-0.0.15.jar'
 
 $CLASSPATH << 'jogg-0.0.7.jar'
 
+MUFFIN_FILE = ROOT_DIR + "/savegame.dat"
+
 require 'monos'
 Monos::Game.start

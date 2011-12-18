@@ -3,7 +3,7 @@ module Monos
     include Monos
     
     def initialize
-      super("Monos")
+      super("Bodge")
     end
     
     def initStatesList(container)
@@ -22,7 +22,7 @@ module Monos
       app.set_display_mode(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, FULL_SCREEN)
       app.set_always_render true
       app.set_target_frame_rate TARGET_FPS
-      #app.set_show_fps true
+      app.set_show_fps SHOW_FPS
       app.set_smooth_deltas true
       app.set_vsync VSYNC
       app.start

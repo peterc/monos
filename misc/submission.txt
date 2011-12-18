@@ -1,0 +1,20 @@
+Notes for filling in Ludum Dare submission form
+...
+
+Name of Entry: Bodge's Island
+
+     Division: 48 Hour Compo Entry
+
+  Screenshots: bodge-shot1.png and bodge-shot2.png
+  
+      Windows: http://peterc.org.s3.amazonaws.com/bodge-windows.zip
+      
+          OSX: http://peterc.org.s3.amazonaws.com/bodge-osx.zip
+  
+       Source: https://github.com/peterc/monos
+       
+Notes:
+
+Developed using Java's Slick 2D and LWJGL libraries but controlled from JRuby, a JVM based Ruby implementation. Runs very much like any other Java app though.
+
+In Bodge's Island you're a rich game developer looking for some peace on your new private island. But fanboys are on the way! If they reach you, your spirit will be sapped so find a way to remain alone.

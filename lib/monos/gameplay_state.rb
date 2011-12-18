@@ -5,16 +5,17 @@ module Monos
     def getID; 0; end
     
     def render(container, sbg, graphics)
-      #@bg.draw(0, 0, Monos::VIEWPORT_WIDTH, Monos::VIEWPORT_HEIGHT, 0, 0, 640, 480)
-      #graphics.set_color(Color.white)
-      #graphics.draw_string(@player.actual_x.to_s, 400, 8)
-      
       @level.render(@player)
-      @player.render
+
+      @entities.each { |entity| entity.render }
       
-      graphics.set_color(Color.new(0, 40, 80))
-      #graphics.set_line_width(8 * Monos::PIXEL_SIZE)
-      #graphics.draw_rect(4.0, 4.0, Monos::SCALED_WIDTH - 7.5, Monos::SCALED_HEIGHT - 7.5)
+      # Do transparent bar at bottom for info, etc.
+      graphics.set_color(Color.new(255, 255, 255, 120))
+      graphics.fill_rect(0, Monos::VIEWPORT_HEIGHT - 12 * Monos::PIXEL_SIZE, Monos::VIEWPORT_WIDTH, 12 * Monos::PIXEL_SIZE)
+
+      # Render stuff in bottom bar
+      @player.render_inventory
+      @player.render_lives
     end
 
     def initialize
@@ -25,25 +26,50 @@ module Monos
 
       @bg = Image.new(RELATIVE_ROOT + 'data/bg.png')
       
-      @level = Level.new
-      @player = Player.new(@level)
       
       container.get_input.enable_key_repeat(0, 50)
       
     end
     
     def enter(container, sbg)
+      @queue = []
+      @last_queue_processed = Time.now.to_i
+      
+      @level = Level.new(rand(3) + 4, rand(3) + 3)
+      @player = Player.new(@level)
+      @level.cells[@player.y][@player.x + 2] = HouseCell.new
+      
       @sound = Sound.new(RELATIVE_ROOT + 'data/blip.ogg')
       @sound.play
-      @music = Music.new(RELATIVE_ROOT + 'data/musicingame.ogg')
-      @music.loop
+      
+      @queue << Proc.new do
+        Sound.new(RELATIVE_ROOT + 'data/leavemealone.ogg').play
+      end
+      
+      @queue << Proc.new do
+        @music = Music.new(RELATIVE_ROOT + 'data/musicingame.ogg')
+        @music.loop
+      end
+      
+      @entities = []
+      @entities << @player
+      
+      @entities << Boat.new(@level, @player.x - 5, @player.y - 5)
+      @entities << Fanboy.new(@level, @player.x + 5, @player.y + 5)
     end
     
     def update(container, sbg, delta)
       input = container.get_input
-      sbg.enter_state(1) if input.is_key_pressed(Input::KEY_ESCAPE)      
+      sbg.enter_state(1) if input.is_key_pressed(Input::KEY_ESCAPE)
       
-      @player.tick(container, delta)
+      if Time.now.to_i > @last_queue_processed
+        @last_queue_processed = Time.now.to_i
+        unless @queue.empty?
+          @queue.shift.call
+        end
+      end
+      
+      @entities.each { |entity| entity.tick(container, delta) }
     end
     
     
