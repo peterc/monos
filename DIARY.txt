@@ -1,5 +1,32 @@
 DECEMBER 17, 2011
 
+00:38
+Fixing both cross platform rendering and classpath/deployment
+issues seems to be the lion's share of the activity! Rewritten
+the rendering stuff to not use #scale anymore, instead doing
+scaling on every draw and then using integer pixel offsets
+rather than float offsets which were making textures render
+with gaps on Windows (ARGH!!)
+
+At some point I might even figure out a game mechanic.. but
+on the plus side, movement and rendering now seem to be as
+smooth as butter. Lumpy butter.
+
+23:56
+Turns out we need to get jogg, and only jogg, into the
+same area as the 'native' libraries. For some reason
+jogg's contents aren't ending up on the classpath automatically
+as with everything else.
+
+23:47
+Wasted 30 minutes trying to get the latest build running on
+Windows. Turned out it was generally a .jar problem. For some
+reason, jogg-0.0.7.jar's classes weren't readily available
+like those from the other jars.. who knows why? :-)
+
+Either way, $CLASSPATH << 'lib/jogg-0.0.7.jar' fixed it on
+Mac. Still working on it for Windows..
+
 23:06
 Got the concept of game 'states' involved. So there's now an
 'intro' screen (with nothing on it!) and a gameplay state you

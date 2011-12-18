@@ -17,7 +17,7 @@ module Monos
       app.set_always_render true
       app.set_show_fps true
       app.set_smooth_deltas true
-      app.set_vsync true
+      app.set_vsync Monos::VSYNC
       app.start
     end
     

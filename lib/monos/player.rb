@@ -1,44 +1,51 @@
 module Monos
   class Player
-    attr_accessor :x, :y, :actual_x, :actual_y
+    attr_accessor :x, :y, :actual_x, :actual_y, :level
     
-    def initialize(sprite)
-      @x = 20
-      @y = 20
-      @actual_x = 20
-      @actual_y = 20
+    def initialize(sprite, level)
       @sprite = sprite
+      @level = level
+      @x = level.width / 2
+      @y = level.height / 2
+      @actual_x = @x
+      @actual_y = @y
     end
     
-    def process_input(container, delta)
-      input = container.get_input
-      
-      movement_delta = 0.01 * delta
+    def process_input(container, delta)     
       x_diff = (@x - @actual_x).abs.round
       y_diff = (@y - @actual_y).abs.round
       
-      if input.is_key_down(Input::KEY_LEFT) && @x >= 0 && x_diff < 2
-        @x -= movement_delta
-      end
-      if input.is_key_down(Input::KEY_RIGHT) && @x <= 100 && x_diff < 2
-        @x += movement_delta
-      end
-      if input.is_key_down(Input::KEY_UP) && @y >= 0 && y_diff < 2
-        @y -= movement_delta
-      end
-      if input.is_key_down(Input::KEY_DOWN) && @y <= 100 && y_diff < 2
-        @y += movement_delta
+      unless x_diff > 1 && y_diff > 1
+        input = container.get_input
+        movement_delta = 0.01 * delta
+        left = input.is_key_down(Input::KEY_LEFT) && @x >= 0 && x_diff < 1
+        right = input.is_key_down(Input::KEY_RIGHT) && @x < level.width - 1 && x_diff < 1
+        up = input.is_key_down(Input::KEY_UP) && @y >= 0 && y_diff < 1
+        down = input.is_key_down(Input::KEY_DOWN) && @y < level.height - 1 && y_diff < 1
+
+        if left
+          @x -= movement_delta
+        end
+        if right
+          @x += movement_delta
+        end
+        if up
+          @y -= movement_delta
+        end
+        if down
+          @y += movement_delta
+        end
       end
     end
     
     def tick(container, delta)
       process_input(container, delta)
       
-      if (@actual_x - @x).abs < 0.1
+      if (@actual_x - @x).abs < 0.25
         @actual_x = @x
       end
 
-      if (@actual_y - @y).abs < 0.1
+      if (@actual_y - @y).abs < 0.25
         @actual_y = @y
       end
       
@@ -54,14 +61,15 @@ module Monos
       end
       if @actual_y > @y
         @actual_y -= 0.01 * delta
-      end
-      
-      @actual_x = (@actual_x * 10).round / 10.0
-      @actual_y = (@actual_y * 10).round / 10.0
+      end      
     end
     
     def render
-      @sprite.draw(8 * 8, 6 * 8)
+      x = 8 * 8 * Monos::PIXEL_SIZE
+      y = 6 * 8 * Monos::PIXEL_SIZE
+      x2 = x + (Monos::PIXEL_SIZE * 8)
+      y2 = y + (Monos::PIXEL_SIZE * 8)
+      @sprite.draw(x, y, x2, y2, 0, 0, 7, 7)
     end
   end
 end

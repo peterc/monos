@@ -17,6 +17,8 @@ java_import org.newdawn.slick.Sound
 java_import org.newdawn.slick.font.HieroSettings
 java_import org.newdawn.slick.font.effects.ColorEffect
 java_import org.newdawn.slick.Color
+java_import com.jcraft.jogg.Buffer
+java_import com.jcraft.jogg.SyncState
 
 require 'monos/level'
 require 'monos/player'
@@ -33,4 +35,5 @@ module Monos
   SCALED_WIDTH = VIEWPORT_WIDTH / PIXEL_SIZE
   SCALED_HEIGHT = VIEWPORT_HEIGHT / PIXEL_SIZE
   FULL_SCREEN = false
+  VSYNC = true
 end

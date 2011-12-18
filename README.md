@@ -32,6 +32,13 @@ Directories
 * `misc` - miscellaneously, currently just a Launch4j build file
 * `native` - native libraries for OS X, Linux and Windows
 
+Notes
+-----
+
+For some reason, loading jogg-0.0.7.jar does not put its classes into
+scope, as happens with every other jar.. so jogg-0.0.7.jar needs to be
+included as 'native' for a deployment. Eugh.
+
 Licenses
 --------
 

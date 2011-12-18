@@ -1,13 +1,15 @@
 module Monos
   class Level
-    attr_reader :cells
+    attr_reader :cells, :width, :height
     
     def initialize
       @cells = []
+      @width = 10
+      @height = 10
       
-      100.times do
+      @height.times do
         sa = []
-        100.times do
+        @width.times do
           v = 2
           v = 0 if rand(10) == 0
           v = 1 if rand(10) == 0
@@ -24,7 +26,14 @@ module Monos
           ypos = y * 8 + (offset_y * 8)
           
           if xpos > -8 && xpos < Monos::SCALED_WIDTH && ypos > -8 && ypos < Monos::SCALED_HEIGHT
-            tileset[col].draw(xpos, ypos)
+            
+            x1 = (xpos * Monos::PIXEL_SIZE).round
+            y1 = (ypos * Monos::PIXEL_SIZE).round
+            x2 = x1 + (Monos::PIXEL_SIZE * 8)
+            y2 = y1 + (Monos::PIXEL_SIZE * 8)
+            #@sprite.draw(x, y, x2, y2, 0, 0, 7, 7)
+            #tileset[col].draw((x1 * 10).round / 10.0, (ypos * 10).round / 10.0)
+            tileset[col].draw(x1, y1, x2, y2, 0, 0, 8, 8)
           end
         end
       end
