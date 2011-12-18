@@ -1,5 +1,10 @@
 DECEMBER 17, 2011
 
+02:57
+Major developments! I had a brainwave and have made huge progress
+in implementing it. No time to explain as I have to go to sleep
+soon :-(
+
 00:38
 Fixing both cross platform rendering and classpath/deployment
 issues seems to be the lion's share of the activity! Rewritten
