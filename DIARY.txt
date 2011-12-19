@@ -4,6 +4,11 @@ DEVELOPMENT DIARY
 DECEMBER 19, 2011
 -----------------
 
+02:52
+Have worked out from this diary I got 17.5 hours of development time
+into the game out of the 48 available. But.. I'd rather have a family
+than a full 48 hours, so I made my bed.. ;-)
+
 02:30
 Have finished cleaning up the README and other documentation. Created
 a screencast and uploaded to YouTube at:
@@ -32,6 +37,8 @@ Finally back at the office. Managed to do an hour at the in-laws'
 which got me through creating a simple font and a text renderer
 (which also supports arbitrary sprites from the sprite sheet :-))
 Can I get the real game mechanic done in 3.75 hours?
+
+------- BREAK -------
 
 17:29
 A massive gap due to 3 hours' sleep, taking my daughter to see
@@ -72,7 +79,6 @@ with gaps on Windows (ARGH!!)
 At some point I might even figure out a game mechanic.. but
 on the plus side, movement and rendering now seem to be as
 smooth as butter. Lumpy butter.
-
 
 
 DECEMBER 17, 2011
