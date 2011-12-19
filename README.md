@@ -1,6 +1,8 @@
 Bodge (codename was 'Monos')
 ============================
 
+![Bodge in-game screenshot](https://github.com/peterc/monos/raw/master/misc/bodge-shot3.png)
+
 Bodge is a game I built for the Ludum Dare #22 48 hour game development contest (the theme was 'alone'). 'Monos' (Greek for alone) was the codename prior to it being called Bodge and is still used throughout the codebase.
 
 Story
