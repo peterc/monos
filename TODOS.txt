@@ -4,13 +4,10 @@ PERSONAL TODO LIST
 Essential
 ---------
 
-* Entities spawning
-* Entities randomly on map approaching from afar
 * Turrets
 * Turret shooting logic
 * Placing turrets
 * Bombs
-* Gun
 
 
 Nice to have
@@ -20,16 +17,3 @@ Nice to have
 * "waves" / levels (due to the carnage, you've decided to buy a new island..)
 * actually implement bombs and guns..
 
-End
----
-
-* Package for Windows
-* Package for OS X
-* Commit to GitHub
-* Upload
-  - http://peterc.org.s3.amazonaws.com/bodge-windows.zip
-  - http://peterc.org.s3.amazonaws.com/bodge-osx.zip
-
-* Screencast
-* Twitter
-* Facebook

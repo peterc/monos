@@ -15,6 +15,6 @@ Name of Entry: Bodge's Island
        
 Notes:
 
-Developed using Java's Slick 2D and LWJGL libraries but controlled from JRuby, a JVM based Ruby implementation. Runs very much like any other Java app though.
+Developed using Java's Slick 2D and LWJGL libraries but controlled from JRuby, a JVM based Ruby implementation. Runs very much like any other Java app though. A Java Runtime Environment is required, sadly, and I ran out of time to bundle one.
 
 In Bodge's Island you're a rich game developer looking for some peace on your new private island. But fanboys are on the way! If they reach you, your spirit will be sapped so find a way to remain alone.
