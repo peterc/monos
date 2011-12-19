@@ -60,15 +60,22 @@ module Monos
       #end
       
       @queue.add(3) do
-        @level.entities << Boat.new(@level, rand(60), 0)
+        3.times do
+          @level.entities << Boat.new(@level, rand(60), 0)
+        end
+        3.times do
+          @level.entities << Boat.new(@level, rand(60), 59)
+        end
         @blip.play
       end
       
       @queue.every(2) do
-        case rand(12)
+        case rand(5)
         when 0
-          @level.entities << Boat.new(@level, rand(60), 0)
-          @blip.play
+          3.times do
+            @level.entities << Boat.new(@level, rand(60), 0)
+            @blip.play
+          end
         when 1
           @level.entities << Boat.new(@level, 0, rand(60))
           @blip.play
@@ -85,6 +92,10 @@ module Monos
       
       #@entities << Boat.new(@level, @player.x - 5, @player.y - 5)
       @level.entities << Turret.new(@level, @player.x + 3, @player.y + 3)
+    end
+    
+    def leave(container, sbg)
+      @music.stop
     end
     
     def update(container, sbg, delta)

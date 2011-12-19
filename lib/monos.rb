@@ -31,6 +31,7 @@ require 'monos/fake_player'
 require 'monos/boat'
 require 'monos/fanboy'
 require 'monos/turret'
+require 'monos/cannonball'
 
 require 'monos/cell'
 require 'monos/grass_cell'

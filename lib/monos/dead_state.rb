@@ -8,7 +8,7 @@ module Monos
       graphics.fill_rect(0, 0, Monos::VIEWPORT_WIDTH, Monos::VIEWPORT_HEIGHT)
 
       @big_font.draw_string("a_BODGE_a", 15, 70)
-      @font.draw_string("YOU ARE DEAD", 80, 226)
+      @font.draw_string("YOU ARE DEAD", 105, 226)
       @small_font.draw_string("SPACE TO RETURN TO MAIN MENU", 26, 410)
     end
 

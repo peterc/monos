@@ -4,7 +4,7 @@ module Monos
     
     def initialize(level)
       super
-      @lives = 6
+      @lives = 5
       #@weapons = []
       @weapon_selected = 0
     end
@@ -31,15 +31,15 @@ module Monos
     def render_inventory
       x = 8
       y = Monos::VIEWPORT_HEIGHT - 8 - Monos::PIXEL_SIZE * Monos::TILE_WIDTH
-      Font.new(8).draw_string("jklm", x, y)
+      Font.new(8).draw_string("g", x, y)
     end
     
     def process_input(container, delta)     
       x_diff = (@x - @actual_x).abs.round
       y_diff = (@y - @actual_y).abs.round
       
+      input = container.get_input
       unless x_diff > 1 && y_diff > 1
-        input = container.get_input
         movement_delta = 0.01 * delta
         
         # Is the key pressed and movement ready?
@@ -50,6 +50,35 @@ module Monos
         
         move(movement_delta, left, right, up, down) if left || right || up || down
       end
+      
+      if input.is_key_pressed(Input::KEY_SPACE)
+        Sound.new(RELATIVE_ROOT + 'data/shot.ogg').play
+        
+        r = rand(4)
+        
+        case r
+        when 0
+          cb = Cannonball.new(@level, @x - 1, @y - 1)
+          cb.dx = -1
+          cb.dy = -1
+          @level.entities << cb
+        when 1
+          cb = Cannonball.new(@level, @x - 1, @y + 1)
+          cb.dx = -1
+          cb.dy = 1
+          @level.entities << cb
+        when 2
+          cb = Cannonball.new(@level, @x + 1, @y - 1)
+          cb.dx = 1
+          cb.dy = -1
+          @level.entities << cb
+        when 3
+          cb = Cannonball.new(@level, @x + 1, @y + 1)
+          cb.dx = 1
+          cb.dy = 1
+          @level.entities << cb
+        end
+      end      
     end
     
     def render

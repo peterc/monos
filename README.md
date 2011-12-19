@@ -1,5 +1,7 @@
-Codename Monos
-==============
+Bodge (codename was 'Monos')
+============================
+
+Bodge is a game for Ludum Dare 22. This is all highly unpolished..
 
 'Monos' (Greek for alone) is the codename for my as-yet undesigned Ludum Dare 22 entry.
 

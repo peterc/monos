@@ -27,7 +27,7 @@ module Monos
       @chars["h"[0]] = Monos.tiles[4][0]      
       
 
-
+      @chars["g"[0]] = Monos.tiles[4][7]
       @chars["j"[0]] = Monos.tiles[4][1]      
       @chars["k"[0]] = Monos.tiles[4][2]      
       @chars["l"[0]] = Monos.tiles[4][3]      
