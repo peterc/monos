@@ -1,6 +1,6 @@
 module Monos
   class SandCell < Cell
-    def initialize
+    def initialize(x, y)
       super
       @name = :sand
       @sprite = Monos.tiles[0][5]

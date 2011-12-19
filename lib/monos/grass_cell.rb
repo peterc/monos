@@ -1,6 +1,6 @@
 module Monos
   class GrassCell < Cell
-    def initialize
+    def initialize(x, y)
       super
       
       @name = :grass

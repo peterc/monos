@@ -9,6 +9,7 @@ module Monos
     def initStatesList(container)
       add_state(IntroState.new)
       add_state(GameplayState.new)
+      add_state(DeadState.new)
     end
     
     def init(container)

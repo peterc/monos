@@ -1,9 +1,10 @@
 module Monos
   class Cell
-    attr_reader :sprite, :name
+    attr_reader :sprite, :name, :x, :y
     
-    def initialize
+    def initialize(x, y)
       @sprite = Monos.tiles[0][0]
+      @x, @y = x, y
       @blocking = true
       @name = :cell
     end

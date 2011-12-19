@@ -1,17 +1,20 @@
 module Monos
   class Level
     attr_reader :cells, :width, :height, :tlx, :tly
+    attr_accessor :entities, :player
     
     def initialize(island_size_x = 0, island_size_y = 0)
       @cells = []
       @width = 60
       @height = 60
       @tlx, @tly = 0, 0
+      @entities = []
+      @player = nil
       
-      @height.times do
-        sa = []
-        @width.times do
-          v = SeaCell.new
+      @height.times do |y|
+        sa = [] 
+        @width.times do |x|
+          v = SeaCell.new(x, y)
           sa << v
         end
         @cells << sa
@@ -30,17 +33,31 @@ module Monos
       
       island_min_y.upto(island_max_y).each do |y|
         island_min_x.upto(island_max_x).each do |x|
-          if (x == island_min_x || x == island_max_x || y == island_max_y || y == island_min_y)
-            @cells[y][x] = case rand(7)
+          distance_from_edge = [(x - island_min_x).abs, (x - island_max_x).abs, (y - island_min_y).abs, (y - island_max_y).abs].min
+          
+          if distance_from_edge == 0
+            @cells[y][x] = case rand(8)
+            when 0..4
+              SeaCell.new(x, y)
+            when 5..7
+              SandCell.new(x, y)
+            end
+          elsif distance_from_edge == 1
+            @cells[y][x] = case rand(8)
             when 0
-              SeaCell.new
-            when 1
-              GrassCell.new
-            when 2..6
-              SandCell.new
+              GrassCell.new(x, y)
+            when 1..7
+              SandCell.new(x, y)
+            end
+          elsif distance_from_edge == 2
+            @cells[y][x] = case rand(7)
+            when 0..5
+              GrassCell.new(x, y)
+            when 6
+              SandCell.new(x, y)
             end
           else
-            @cells[y][x] = GrassCell.new
+            @cells[y][x] = GrassCell.new(x, y)
           end
         end        
       end
@@ -51,7 +68,13 @@ module Monos
       #@cells[-1] = [WallCell.new] * @width
     end
     
+    def entities_at(x, y)
+      # TODO: MAKE THIS NICER!!
+      @entities.detect { |e| e.x >= x - 0.5 && e.x < x + 0.5 && e.y >= y - 0.5 && e.y < y + 0.5 }
+    end
+    
     def cell(x, y)
+      return false if x < 0 || x > @width - 1 || y > @height - 1 || y < 0
       @cells[y.round][x.round]
     end
     

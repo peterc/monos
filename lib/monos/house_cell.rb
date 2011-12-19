@@ -1,6 +1,6 @@
 module Monos
   class HouseCell < Cell
-    def initialize
+    def initialize(x, y)
       super
       @name = :house
       @sprite = Monos.tiles[0][11]

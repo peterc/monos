@@ -1,12 +1,12 @@
 module Monos
   class Creature
-    attr_accessor :x, :y, :actual_x, :actual_y, :level
+    attr_accessor :x, :y, :actual_x, :actual_y, :level, :state, :can_move
     
     ANIMATION_DURATION = 100
     
     def sprite_frames
       row = 0
-      frames = { :standing => [[row, 3]], :up => [[row, 3]], :right => [[row, 3]], :left => [[row, 3]], :down => [[row, 3]] }
+      frames = { :dead => [[9, 9]], :standing => [[row, 3]], :up => [[row, 3]], :right => [[row, 3]], :left => [[row, 3]], :down => [[row, 3]] }
     end
     
     def sprites      
@@ -25,6 +25,10 @@ module Monos
       @sprites
     end
     
+    def can_move?
+      @can_move
+    end
+    
     def initialize(level, x = nil, y = nil)
       @state = :standing
       @level = level
@@ -32,6 +36,7 @@ module Monos
       @y = y || level.height / 2
       @actual_x = @x
       @actual_y = @y
+      @can_move = true
     end
     
     def render
@@ -60,10 +65,12 @@ module Monos
     end
     
     def can_visit?(cell)
-      true
+      cell ? true : false
     end
     
     def move(movement_delta, left, right, up, down)
+      return unless can_move?
+      
       if left && can_visit?(level.cell(@x - 0.5, @y))
         @x -= movement_delta
         @state = :left
@@ -83,6 +90,8 @@ module Monos
     end
     
     def tick(container, delta)
+      return if @state == :dead
+      
       if (@actual_x - @x).abs < 0.25
         @actual_x = @x
         @state = :standing
@@ -106,11 +115,53 @@ module Monos
       if @actual_y > @y
         @actual_y -= 0.01 * delta
       end     
-      
-
-      
     end
     
+    def surrounding_entities
+      d = 1
+      Array(@level.entities_at(@x, @y)) +
+      Array(@level.entities_at(@x + d, @y + d)) +
+      Array(@level.entities_at(@x + d, @y)) +
+      Array(@level.entities_at(@x + d, @y - d)) +
+      Array(@level.entities_at(@x, @y - d)) +
+      Array(@level.entities_at(@x - d, @y - d)) +
+      Array(@level.entities_at(@x - d, @y)) +
+      Array(@level.entities_at(@x - d, @y + d)) +
+      Array(@level.entities_at(@x, @y + d))
+    end
+    
+    def surrounding_cells
+      d = 1
+      Array(@level.cell(@x, @y)) +
+      Array(@level.cell(@x + d, @y + d)) +
+      Array(@level.cell(@x + d, @y)) +
+      Array(@level.cell(@x + d, @y - d)) +
+      Array(@level.cell(@x, @y - d)) +
+      Array(@level.cell(@x - d, @y - d)) +
+      Array(@level.cell(@x - d, @y)) +
+      Array(@level.cell(@x - d, @y + d)) +
+      Array(@level.cell(@x, @y + d))
+    end
+    
+    def surrounded_by(*types)
+      #found = []
+      types.each do |type|
+        s = surrounding_entities.detect { |e| type == e.class && e.state != :dead }
+        #found += s if s
+        return s if s
+        s = surrounding_cells.detect { |e| type == e.class }
+        return s if s
+        #found += s if s
+      end
+      false
+      #return false if found.empty?
+      #found
+    end
+    
+    def kill
+      @state = :dead
+      Sound.new(RELATIVE_ROOT + 'data/dead.ogg').play
+    end
 
   end
 end

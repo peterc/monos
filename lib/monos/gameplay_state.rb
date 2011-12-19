@@ -6,8 +6,9 @@ module Monos
     
     def render(container, sbg, graphics)
       @level.render(@player)
-
-      @entities.each { |entity| entity.render }
+      
+      @level.entities.each { |entity| entity.render }
+      @player.render
       
       # Do transparent bar at bottom for info, etc.
       graphics.set_color(Color.new(255, 255, 255, 120))
@@ -16,6 +17,8 @@ module Monos
       # Render stuff in bottom bar
       @player.render_inventory
       @player.render_lives
+      
+      @small_font.draw_string("t_#{Time.now.to_i - @start_time}", 8, 8)
     end
 
     def initialize
@@ -26,50 +29,77 @@ module Monos
 
       @bg = Image.new(RELATIVE_ROOT + 'data/bg.png')
       
+      @small_font = Font.new(5.5, 3)
       
       container.get_input.enable_key_repeat(0, 50)
-      
     end
     
     def enter(container, sbg)
-      @queue = []
-      @last_queue_processed = Time.now.to_i
+      @queue = Queue.new
+      @start_time = Time.now.to_i
       
-      @level = Level.new(rand(3) + 4, rand(3) + 3)
+      @level = Level.new(rand(3) + 7, rand(3) + 5)
+      # EUGH
       @player = Player.new(@level)
-      @level.cells[@player.y][@player.x + 2] = HouseCell.new
+      @level.player = @player
+      @level.cells[@player.y][@player.x + 2] = HouseCell.new(@player.x + 2, @player.y)
       
-      @sound = Sound.new(RELATIVE_ROOT + 'data/blip.ogg')
-      @sound.play
+      @blip = Sound.new(RELATIVE_ROOT + 'data/blip.ogg')
       
-      @queue << Proc.new do
+      @queue.add(1) do
         Sound.new(RELATIVE_ROOT + 'data/leavemealone.ogg').play
       end
       
-      @queue << Proc.new do
+      @queue.add(2) do
         @music = Music.new(RELATIVE_ROOT + 'data/musicingame.ogg')
         @music.loop
       end
       
-      @entities = []
-      @entities << @player
+      #@queue.every(2) do
+      #  @blip.play
+      #end
       
-      @entities << Boat.new(@level, @player.x - 5, @player.y - 5)
-      @entities << Fanboy.new(@level, @player.x + 5, @player.y + 5)
+      @queue.add(3) do
+        @level.entities << Boat.new(@level, rand(60), 0)
+        @blip.play
+      end
+      
+      @queue.every(2) do
+        case rand(12)
+        when 0
+          @level.entities << Boat.new(@level, rand(60), 0)
+          @blip.play
+        when 1
+          @level.entities << Boat.new(@level, 0, rand(60))
+          @blip.play
+        when 2
+          @level.entities << Boat.new(@level, 59, rand(60))
+          @blip.play
+        when 3
+          @level.entities << Boat.new(@level, rand(60), 59)
+          @blip.play
+        end
+      end
+      
+      @level.entities << @player
+      
+      #@entities << Boat.new(@level, @player.x - 5, @player.y - 5)
+      @level.entities << Turret.new(@level, @player.x + 3, @player.y + 3)
     end
     
     def update(container, sbg, delta)
       input = container.get_input
       sbg.enter_state(1) if input.is_key_pressed(Input::KEY_ESCAPE)
       
-      if Time.now.to_i > @last_queue_processed
-        @last_queue_processed = Time.now.to_i
-        unless @queue.empty?
-          @queue.shift.call
-        end
-      end
+      @queue.run
       
-      @entities.each { |entity| entity.tick(container, delta) }
+      @level.entities.each { |entity| entity.tick(container, delta) }
+      
+      if @player.lives <= 0
+        @player.kill
+        Sound.new(RELATIVE_ROOT + 'data/dead.ogg').play
+        sbg.enter_state(3)
+      end
     end
     
     

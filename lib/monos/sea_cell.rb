@@ -1,6 +1,6 @@
 module Monos
   class SeaCell < Cell
-    def initialize
+    def initialize(x, y)
       super
       @name = :sea
       

@@ -34,7 +34,9 @@ module Monos
       
       @level = Level.new(7, 5) do |cells|
         40.times do
-          cells[rand(cells.length)][rand(cells.first.length)] = SunCell.new
+          y = rand(cells.length)
+          x = rand(cells.first.length)
+          cells[y][x] = SunCell.new(x, y)
         end
       end
       

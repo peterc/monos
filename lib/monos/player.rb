@@ -1,5 +1,7 @@
 module Monos
   class Player < Creature
+    attr_reader :lives
+    
     def initialize(level)
       super
       @lives = 6
@@ -9,7 +11,7 @@ module Monos
     
     def sprite_frames
       row = 1
-      frames = { :standing => [[row, 0]], :up => [[row, 1], [row, 4]], :right => [[row, 2], [row, 5]], :left => [[row, 3], [row, 6]], :down => [[row, 7], [row, 8]] }
+      frames = { :dead => [[9, 9]], :standing => [[row, 0]], :up => [[row, 1], [row, 4]], :right => [[row, 2], [row, 5]], :left => [[row, 3], [row, 6]], :down => [[row, 7], [row, 8]] }
     end
 
     def can_visit?(cell)
@@ -60,6 +62,11 @@ module Monos
     def tick(container, delta)
       super      
       process_input(container, delta)
+      
+      if enemy = surrounded_by(Monos::Fanboy)
+        @lives -= 1
+        enemy.kill
+      end
     end
   end
 end

@@ -1,8 +1,20 @@
 DEVELOPMENT DIARY
 =================
 
+DECEMBER 19, 2011
+-----------------
+
+01:27
+HAVE A MAJOR RUSH ON!!!!
+
 DECEMBER 18, 2011
 -----------------
+
+23:40
+Finally have other entities on the map like boats and fanboys.
+Been doing some preparation for the submission process and some
+general structural work to get the game mechanic involved. Also
+have clipping (dependant on type of character, too).
 
 21:50
 Finally back at the office. Managed to do an hour at the in-laws'

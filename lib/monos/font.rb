@@ -13,6 +13,13 @@ module Monos
         i += 1
       end
       
+      # Do numbers
+      i = 48
+      Monos.tiles[7][0..10].each do |img|
+        @chars[i] = img
+        i += 1
+      end
+      
       @chars["."[0]] = Monos.tiles[6][10]
       @chars["!"[0]] = Monos.tiles[6][12]
       @chars["?"[0]] = Monos.tiles[6][13]
@@ -25,6 +32,9 @@ module Monos
       @chars["k"[0]] = Monos.tiles[4][2]      
       @chars["l"[0]] = Monos.tiles[4][3]      
       @chars["m"[0]] = Monos.tiles[4][5]
+
+      @chars["t"[0]] = Monos.tiles[3][2]
+      @chars["x"[0]] = Monos.tiles[9][0]
     end
     
     def draw_string(str, x, y)
@@ -47,9 +57,10 @@ module Monos
           meth = :draw
           spacing = @spacing + 2
           
-          if (65..90) === chr || "."[0] == chr || "!"[0] == chr
+          if (65..90) === chr || "."[0] == chr || "!"[0] == chr || (48..57) === chr
             spacing = @spacing
             meth = :draw_flash
+            spacing += 1 if (48..57) === chr
           end
           
           @chars[chr].send(meth, cur_x, cur_y, (@pixel_size * 8), (@pixel_size * 8))

@@ -4,22 +4,20 @@ PERSONAL TODO LIST
 Essential
 ---------
 
-* Other entities
+* Entities spawning
 * Entities randomly on map approaching from afar
 * Turrets
 * Turret shooting logic
 * Placing turrets
 * Bombs
 * Gun
-* Sound FX
-* Bodge loses lives when players touch
 
 
 Nice to have
 ------------
 
 * Nicer edges for grass, sand, etc
-* "waves"/levels
+* "waves" / levels (due to the carnage, you've decided to buy a new island..)
 * actually implement bombs and guns..
 
 End
